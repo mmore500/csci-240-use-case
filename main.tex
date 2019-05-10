@@ -1,0 +1,71 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[margin=0.75in]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{csquotes}
+
+
+\title{Use Case}
+\author{Matthew Moreno}
+
+\begin{document}
+\maketitle
+
+\section{Use Case}
+Data-driven analysis of entries in idea journal (1234)
+
+\section{Brief Description}
+The user wants to undertake a data-driven analysis of the contexts in which she has made entries in her idea journal. The user would like to understand the frequencies of what times of the day, what days of the week, what weather conditions, what locations, and what user-generated tags are associated with entries in the idea notebook.
+
+\section{Actors}
+The actor in the system is the user, the individual who has been using the service to make entries in an idea journal.
+
+\section{Preconditions}
+\begin{itemize}
+	\item The user is registered with the service.
+    \item The user has accepted our terms of service contract.
+    \item The user is authenticated.
+\end{itemize}
+
+\section{Flow of Events}
+	\subsection{Basic Flow}
+    \begin{enumerate}
+    	\item The user triggers this use case by clicking on the ``Siift Analysis'' button on our web navigation bar.
+        \item A loading message (i.e. ``Preparing your analysis...'') will be displayed while the analysis display is prepared.
+        \item The user will be shown a plot of post frequency versus time, as well as a sidebar with several navigation options --- historical frequency analysis view, weather analysis view, time of day analysis view, day of week analysis view, location analysis view, and user-generated tag analysis view.
+        \item If at any time the user selects the historical frequency analysis view, the user will be shown the plot of post frequency versus time (perhaps after a loading message is displayed) along with the navigation sidebar.
+        \item If at any time the user selects the weather analysis view the user will be shown a histogram comparing the number of entries made on sunny, cloudy, rainy, and snowy days (perhaps after a loading message is displayed) along with the navigation sidebar.
+        \item If at any time the user selects the time of day analysis view the user will be shown a histogram comparing the number of entries made in the early morning, morning, afternoon, evening, or late night (perhaps after a loading message is displayed) along with the navigation sidebar.
+        \item If at any time the user selects the location analysis view the user will be shown a map centered on the user's current location with location pins showing the locations at which entries have been made (perhaps after a loading message is displayed) along with the navigation sidebar. The map will allow for user interaction so that the user can rescale and recenter the map view.
+        \item If at any time the user selects the user-generated tag analysis view, the user will be shown a histogram comparing the number of entries made with each of the user-defined tags (perhaps after a loading message is displayed) along with the navigation sidebar.
+        \item The user ends this use case by navigating away from the ``Siift Analysis'' page by clicking on an item on the web navigation bar or otherwise navigating to a different URL with her web browser.
+    \end{enumerate}
+    \subsection{Alternative Flows}
+	\begin{itemize}
+    	\item If the user has not yet made any idea journal entries, they will be shown a friendly message encouraging them to make their first idea journal entry.
+        \item If the user navigates away from the web page while the data-driven analysis is being prepared, there will be no consequence (i.e. no corrupted data). 
+        \item If the user has no geo-tagged entries (i.e. has denied location sharing with our service while making entries), the location analysis option will show a message indicating that the user has no geo-tagged entries instead of showing a map.
+        \item If the user has denied sharing her location with our service for the data analysis but has geo-tagged entries, the location analysis map will be shown centered on the location of the most recent entry.
+    \end{itemize}
+\section{Postconditions}
+At the end of the data-driven analysis, the user remains authenticated.
+
+\section{Comparison}
+The major difference between use case documentation and user story documentation is that use case documentation is implementation-focused while user story documentation is product-focused. That is, use case documentation focuses on \textit{how} the user will interact with the system while the user story documentation focuses on what the user takes away from her interaction with the system (what \textit{value} the user gains from using the system). This difference is illustrated by the use case and story for data-driven analysis of idea entries. Here is the story for that feature:
+\begin{displayquote}
+As a creative individual, so that I can nourish and maximize my creativity I want to undertake a data-driven analysis of the contexts in which I am typically most creative.
+\end{displayquote}
+This text focuses on the user's motivation and desired take-away for using a feature (``nourishing and maximizing my creativity''). Contrast this with the use case story, which tracks exactly how the user interacts with the analysis feature but does not explicitly mention the user's motivation for using the feature.
+With this difference in mind, the story is probably more useful documentation for customers and business-types (i.e. sales and marketing) who care about the value that the user derives from using a service but not so much about exactly how that value is delivered to the customer by the service. On the other hand, the use case documentation is more useful for internal developers, who are in charge of actually designing and implementing the nuts and bolts system that delivers value to the customer. External developers fall somewhere in between; stories might be more useful as they are getting acquainted with the general purposes of the project they are being brought in to but use cases will probably become more relevant as they begin to work on the implementation of the project. Both types of documentation have complementary uses and, therefore, it is difficult to say that one should be favored over the other; they are better together.
+\end{document}
